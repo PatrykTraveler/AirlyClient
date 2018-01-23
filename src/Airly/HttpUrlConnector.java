@@ -39,7 +39,7 @@ public class HttpUrlConnector {
 
             this.output = response.toString();
         }catch(Exception e){
-            System.out.println("ERROR: An unexpected error has occured while connecting");
+            System.out.println("\nERROR: An unexpected error has occured while connecting");
         }
         return this.responseCode;
     }

@@ -130,7 +130,7 @@ public class Visualizer {
                         .append(pm25)
                         .append(" μg/m³");
             }catch(ParseException e){
-                System.out.println("ERROR: Something went wrong while parsing data.");
+                System.out.println("\nERROR: Something went wrong while parsing data.");
             }
         });
 
@@ -143,7 +143,7 @@ public class Visualizer {
                 data.put(formatter.format(parser.parse(m.getFromDateTime())), caqi);
             }
         }catch(ParseException e){
-            System.out.println("ERROR: Something went wrong while parsing data.");
+            System.out.println("\nERROR: Something went wrong while parsing data.");
         }
 
         output.append(generateChart(data));
@@ -192,7 +192,7 @@ public class Visualizer {
     }
 
     private void errorOnExit(){
-        System.out.println("ERROR: An unexpected error has occured while parsing input.");
+        System.out.println("\nERROR: An unexpected error has occured while parsing input.");
         System.exit(0);
     }
 

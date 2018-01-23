@@ -6,6 +6,12 @@ import java.util.Map;
 
 public class MainApplication {
     private static final String baseURL = "https://airapi.airly.eu/v1";
+    private static final String helpInfo =
+            "You can use only two modes" +
+            "\n-MAPPOINT mode                                                    [--latitude ][--longitude ][lat][long]" +
+            "\n-SENSOR mode                                                      [--sensorid ][sensorid]" +
+            "\n-OPTIONALLY (if not specified in API_KEY environment variable)    [--api-key][apikey]\n";
+
     private static String API_KEY;
     public static void main(String[] args) throws Exception {
         Args arguments = new Args();
@@ -33,10 +39,7 @@ public class MainApplication {
             mode = Mode.SENSOR;
         }
         else {
-            System.out.println("You can use only two modes" +
-                               "\n-MAPPOINT mode                                            [--latitude ][--longitude ][lat][long]" +
-                               "\n-SENSOR mode                                              [--sensorid ][sensorid]" +
-                               "\n-OPTIONALLY (if not specified in environment variable)    [--api-key][apikey]\n");
+            System.out.println(helpInfo);
             jCommander.usage();
             System.exit(0);
         }

@@ -21,7 +21,7 @@ public class UserInterface {
         getInfo();
 
         if(this.measurement == null){
-            System.out.println("ERROR: An unexpected error has occured while receiving data");
+            System.out.println("\nERROR: An unexpected error has occured while receiving data");
             System.exit(0);
         }
     }
@@ -41,7 +41,7 @@ public class UserInterface {
         Error connectionResult = Error.getError(connector.sendGet());
 
         if(connectionResult != Error.OK){
-            System.out.println("ERROR: " + connectionResult);
+            System.out.println("\nERROR: " + connectionResult);
             System.exit(0);
         }
 
