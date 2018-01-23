@@ -3,6 +3,7 @@ package Airly;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import Airly.Wrappers.FullMeasurement;
@@ -103,7 +104,7 @@ public class Visualizer {
 
     public String getHistory(){
         StringBuilder output = new StringBuilder();
-        Map<String, Integer> data = new HashMap<>();
+        Map<String, Integer> data = new LinkedHashMap<>();
         List<TimeMeasurement> history = this.measurement.getHistory();
         final SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
         final SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
