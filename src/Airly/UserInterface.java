@@ -21,8 +21,7 @@ public class UserInterface {
         getInfo();
 
         if(this.measurement == null){
-            System.out.println("\nERROR: An unexpected error has occured while receiving data");
-            System.exit(0);
+            ErrorHandler.exitOnError(Error.DATA_ERROR);
         }
     }
 
@@ -38,12 +37,7 @@ public class UserInterface {
         String url = urlBuilder(this.baseURL, this.mode, this.parameters);
 
         HttpUrlConnector connector = new HttpUrlConnector("apikey", apikey, url);
-        Error connectionResult = Error.getError(connector.sendGet());
-
-        if(connectionResult != Error.OK){
-            System.out.println("\nERROR: " + connectionResult);
-            System.exit(0);
-        }
+        connector.sendGet();
 
         Gson gson = new Gson();
         this.measurement = gson.fromJson(connector.getOutput(), FullMeasurement.class);

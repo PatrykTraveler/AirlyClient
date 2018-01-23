@@ -112,7 +112,7 @@ public class Visualizer {
 
         history.forEach(element -> {
             if(element.getMeasurements() == null)
-                errorOnExit();
+                ErrorHandler.exitOnError(Error.DATA_ERROR);
 
             String pm10 = formatValue(element.getMeasurements().getPm10());
             String pm25 = formatValue(element.getMeasurements().getPm25());
@@ -130,7 +130,7 @@ public class Visualizer {
                         .append(pm25)
                         .append(" μg/m³");
             }catch(ParseException e){
-                System.out.println("\nERROR: Something went wrong while parsing data.");
+                ErrorHandler.exitOnError(Error.PARSE_ERROR);
             }
         });
 
@@ -143,7 +143,7 @@ public class Visualizer {
                 data.put(formatter.format(parser.parse(m.getFromDateTime())), caqi);
             }
         }catch(ParseException e){
-            System.out.println("\nERROR: Something went wrong while parsing data.");
+            ErrorHandler.exitOnError(Error.PARSE_ERROR);
         }
 
         output.append(generateChart(data));
@@ -184,16 +184,10 @@ public class Visualizer {
             return this.RED_BACKGROUND_BRIGHT;
         else
             return this.PURPLE_BACKGROUND;
-
     }
 
     private String formatValue(Double value){
         return value != null ? Double.toString(Math.round(value * 100.0) / 100.0) : "--";
-    }
-
-    private void errorOnExit(){
-        System.out.println("\nERROR: An unexpected error has occured while parsing input.");
-        System.exit(0);
     }
 
 }

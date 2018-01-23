@@ -19,7 +19,7 @@ public class HttpUrlConnector {
         this.responseCode = -1;
     }
 
-    public int sendGet(){
+    public void sendGet(){
         try {
             URL urlObject = new URL(url);
             HttpURLConnection con = (HttpURLConnection) urlObject.openConnection();
@@ -39,13 +39,11 @@ public class HttpUrlConnector {
 
             this.output = response.toString();
         }catch(Exception e){
-            System.out.println("\nERROR: An unexpected error has occured while connecting");
+            ErrorHandler.exitOnError(ErrorHandler.getHttpError(this.responseCode));
         }
-        return this.responseCode;
     }
 
     public String getOutput(){
         return this.output;
     }
-    public int getResponseCode() { return this.responseCode; }
 }

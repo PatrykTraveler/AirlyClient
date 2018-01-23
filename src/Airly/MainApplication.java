@@ -47,8 +47,7 @@ public class MainApplication {
         try {
             API_KEY = System.getenv("API_KEY");
         }catch(SecurityException e){
-            System.out.println("ERROR: Cannot access to environment variable");
-            System.exit(0);
+            ErrorHandler.exitOnError(Error.SECURITY_ERROR);
         }
         if(arguments.getApikey() != null && API_KEY == null)
             API_KEY = arguments.getApikey();
